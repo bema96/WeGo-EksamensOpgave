@@ -1,0 +1,22 @@
+"use client";
+
+import { Footer }            from "@/components/_footer/footer";
+import { Navigation }        from "@/components/Navigation/navigation";
+import { AuthProvider }      from "@/providers/auth.provider";
+
+
+
+export default function PublicLayout({ children }) {
+
+	return (
+
+	 <AuthProvider>
+          <Navigation />
+           <main className="flex-1 py-5 px-5">
+            {children}
+           </main>
+          <Footer />
+	 </AuthProvider>
+
+	);
+}

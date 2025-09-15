@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer
       className="
-        relative w-full mt-10 overflow-visible
+        relative w-full mt-10 overflow-visible z-99999
         h-[clamp(140px,28vh,260px)]
         sm:h-[clamp(160px,30vh,320px)]
         md:h-[clamp(180px,32vh,380px)]
@@ -21,7 +21,7 @@ export const Footer = () => {
         fill
         priority
         aria-hidden
-        className="object-contain object-bottom lg:hidden -z-10"
+        className="object-contain object-bottom lg:hidden -z-10 realtive overflow-visible h-full"
       />
       {/* BG image – desktop dækker pænt */}
       <Image
@@ -33,7 +33,7 @@ export const Footer = () => {
         className="hidden lg:block object-cover [object-position:bottom] -z-10"
       />
 
-      <div className="absolute top-[200px] left-2 lg:top-[180px] lg:left-6 xl:top-[150px] text-[var(--sky)]">
+      <div className="absolute bottom-[100px] left-2 lg:bottom-[150px] lg:left-6 xl:bottom-[200px] text-[var(--sky)]">
         <h1 className="text-xs lg:text-2xl">© 2025 WeGo ApS</h1>
         <p className="text-[10px] lg:text-lg">Fartstræde 12c, 2. sal, 9000 Aalborg</p>
       </div>
