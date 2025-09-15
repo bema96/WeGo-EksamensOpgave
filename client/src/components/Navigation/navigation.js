@@ -30,7 +30,7 @@ export const Navigation = () => {
   if (!hydrated) return null;
 
   return (
-    <nav className="bg-[var(--gray)] text-[var(--gral)] text-sm h-[100px] flex items-center py-4 px-6">
+    <nav className="bg-[var(--gray)] text-[var(--gral)] text-sm h-[120px] flex items-center py-4 px-6">
       {isMobile ? (
         <MobileNavigation
           loginData={loginData}

@@ -10,7 +10,11 @@ export const MobileNavigation = ({ loginData, menuOpen, setMenuOpen, links, user
   <div className="flex w-full items-center justify-between">
 
     <Link href="/" className="flex items-center gap-2">
-      <img src="/WeGo.svg" alt="Logo" className="" />
+      <img 
+      src="/WeGo.svg" 
+      alt="Logo" 
+      width={"100"}
+       />
     </Link>
 
     <div className="realtive flex items-center gap-8">

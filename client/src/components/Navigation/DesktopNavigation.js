@@ -8,7 +8,10 @@ export const DesktopNavigation = ({ loginData, links, username }) => (
     <div className='flex items-center gap-10'>
 
       <Link href="/" className="flex items-center gap-2 mr-5">
-        <img src="/WeGo.svg" alt="Logo" className="" />
+        <img 
+        src="/WeGo.svg" 
+        alt="Logo" 
+        width={120} />
       </Link>
 
       {links.map(link =>
