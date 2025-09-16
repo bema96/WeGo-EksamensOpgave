@@ -1,10 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { SearchLift } from "@/components/_search/searchLift";
+import { useState }        from "react";
+import { useRouter }       from "next/navigation";
+import { useSlides }       from "@/hooks/useSlides";
+import { Slideshow }       from "@/components/_slides/slides";
+import { SearchLift }      from "@/components/_search/searchLift";
+import { ErrorMessage }    from "@/components/UI/Error.../ErrorMessage";
+import { LoadingWavyDots } from "@/components/UI/Loading.../LoadingWavyDots";
 
-export default function FrontPage() {
+export default function FrontPage({ className }) { 
+
+  // Data
+  const { data, loading, error } = useSlides();
+  const slides = Array.isArray(data) ? data : [];
   
   // States
   const [from, setFrom] = useState("");
@@ -23,17 +31,31 @@ export default function FrontPage() {
     router.push(`/list?${params}`);
   };
 
+  if (loading) return <div><LoadingWavyDots text={""} /></div>
+  if (error)   return <div><ErrorMessage message={""} /></div>
+
 
   return (
-    <div className="p-4">
-      <SearchLift
-        text="Find et lift"
-        from={from}
-        to={to}
-        onFrom={setFrom}
-        onTo={setTo}
-        onSubmit={handleSubmit}
-      />
+    <div className="relative">
+      <div className="relative">
+        <Slideshow
+          slides={slides}
+        />
+
+        <SearchLift
+          text="Find et lift"
+          from={from}
+          to={to}
+          onFrom={setFrom}
+          onTo={setTo}
+          onSubmit={handleSubmit}
+          className={`absolute left-1/2 top-20 -translate-x-1/2 w-[90%] max-w-[800px] ${className}`}
+        />
+      </div>
+
+      <div>
+
+      </div>
     </div>
   );
 }

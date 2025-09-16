@@ -4,6 +4,7 @@ import { Button } from "../UI/UniversalButton/button";
 import { Pin } from "@/assets/icons/pin";
 
 export const SearchLift = ({
+  className,
   text = "",
   from = "",
   to = "",
@@ -13,7 +14,8 @@ export const SearchLift = ({
 }) => {
     
   return (
-    <form onSubmit={onSubmit} className="bg-red-200 flex flex-col px-3 py-5 rounded-xl gap-3">
+
+    <form onSubmit={onSubmit} className={`${className} bg-[var(--white)] flex flex-col px-5 py-5 rounded-2xl gap-3 shadow-2xl`}>
       <h1 className="font-bold text-lg">{text}</h1>
 
       <div className="relative">
@@ -22,7 +24,7 @@ export const SearchLift = ({
           placeholder="Hvor fra?"
           value={from}
           onChange={(e) => onFrom(e.target.value)}
-          className="border border-[var(--gray)] rounded-2xl p-4 w-full pl-10"
+          className="border border-[var(--gral)] rounded-2xl p-4 w-full pl-10"
         />
         <Pin className="absolute top-[20px] left-3" />
       </div>
@@ -33,7 +35,7 @@ export const SearchLift = ({
           placeholder="Hvor til?"
           value={to}
           onChange={(e) => onTo(e.target.value)}
-          className="border border-[var(--gray)] rounded-2xl p-4 w-full pl-10"
+          className="border border-[var(--gral)] rounded-2xl p-4 w-full pl-10"
         />
         <Pin className="absolute top-[20px] left-3" />
       </div>
