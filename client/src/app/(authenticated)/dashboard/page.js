@@ -23,7 +23,7 @@ export const metadata = {
 
 
 
-import DashboardPage from "@/pages/private/dashboardPage";
+import DashboardPage from "@/pages/_private/dashboardPage";
 
 export default function Page() {
   return (

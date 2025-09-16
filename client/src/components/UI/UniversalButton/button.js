@@ -1,6 +1,6 @@
 const variants = {
     default: "",
-    primary: "",
+    primary: "bg-[var(--teal)] w-full text-xl font-lightbold text-[var(--white)] p-4 rounded-full",
     secondary: "",
     danger: "",
 };

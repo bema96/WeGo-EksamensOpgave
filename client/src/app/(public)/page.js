@@ -25,11 +25,13 @@ export const metadata = {
 };
 
 
-export default function FrontPage() {
+import FrontPage from "@/pages/FrontPage";
+
+export default function Page() {
 	
     return (
-        <div>
-            <h1>Velkommen til forsiden</h1>
-        </div>
+      <>
+      <FrontPage />
+      </>
     )
 }

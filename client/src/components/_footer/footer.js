@@ -7,10 +7,10 @@ export const Footer = () => {
     <footer
       className="
         relative w-full mt-10 overflow-visible z-99999
-        h-[clamp(140px,28vh,260px)]
-        sm:h-[clamp(160px,30vh,320px)]
-        md:h-[clamp(180px,32vh,380px)]
-        lg:h-[clamp(220px,36vh,460px)]
+        h-[clamp(150px,35vh,280px)]
+        sm:h-[clamp(160px,40vh,400px)]
+        md:h-[clamp(250px,55vh,550px)]
+        lg:h-[clamp(300px,50vh,500px)]
         xl:h-[clamp(260px,40vh,520px)]
       "
     >
