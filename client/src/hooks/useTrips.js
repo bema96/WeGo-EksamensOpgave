@@ -1,6 +1,8 @@
 import { useFetch } from "./useFetch";
 
-export function useTrips() {
+export function useTrips(id) {
 
-return useFetch('/api/trips', "GET");
+  const endpoint = id ? `/api/trips/${id}` : "/api/trips";
+  
+  return useFetch(endpoint, { method: "GET" });
 }

@@ -1,5 +1,5 @@
 
-export const Avatar = (props) => {
+export const AvatarIcon = ({ className, ...props}) => {
 
     return (
     <svg 
@@ -8,9 +8,9 @@ export const Avatar = (props) => {
         viewBox="0 0 26 26" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
+        className={className}
         {...props}
         >
-
         <g clipPath="url(#clip0_656_15402)">
         <rect 
         width="26" 

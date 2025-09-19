@@ -2,21 +2,21 @@ import { Request, Response } from 'express';
 import { prisma } from '../prisma.js';
 
 export const getRecords = async (req: Request, res: Response) => {
-  const reviewerId = req.user?.id;
-
   try {
     const data = await prisma.review.findMany({
-      where: {
-        reviewerId: Number(reviewerId),
+      include: {
+        reviewer: { // viser lidt ekstra info om brugeren der har skrevet review
+          select: { firstname: true, lastname: true, imageUrl: true }
+        }
       }
     });
-
     res.json(data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to fetch trips' });
+    res.status(500).json({ error: 'Failed to fetch reviews' });
   }
 };
+
 
 export const getRecord = async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -28,7 +28,7 @@ export const getRecord = async (req: Request, res: Response) => {
     res.json(data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to fetch trips' });
+    res.status(500).json({ error: 'Failed to fetch review' });
   }
 };
 
@@ -43,14 +43,20 @@ export const getRecordsByUserId = async (req: Request, res: Response) => {
         reviewerId: true,
         numStars: true,
         comment: true,
+        reviewer: {               // <-- relation-objektet til User
+          select: { 
+            firstname: true,
+            lastname: true,
+            imageUrl: true
+          }
+        }
       },
-
     });
 
     res.json(data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to fetch trips' });
+    res.status(500).json({ error: 'Failed to fetch reviews' });
   }
 };
 

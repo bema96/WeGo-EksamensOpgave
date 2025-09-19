@@ -30,7 +30,7 @@ export const getRecord = async (req: Request, res: Response) => {
         lastname: true,
         email: true,
         description: true,
-        image: true,
+        imageUrl: true,
         isActive: true
       }
     });
@@ -57,7 +57,7 @@ export const createRecord = async (req: Request, res: Response) => {
         email,
         password: hashedPassword,
         description,
-        image,
+        imageUrl: image,
         refreshToken,
         isActive: Boolean(isActive),
       },

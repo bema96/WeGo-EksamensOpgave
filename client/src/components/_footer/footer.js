@@ -1,42 +1,28 @@
-import Image from "next/image";
-import FooterDesktop from "../../assets/images/footerdesktop.svg";
-import FooterMobile from "../../assets/images/footermobile.svg";
+// components/_footer/Footer.jsx
+"use client";
+
+import { usePathname } from "next/navigation";
+import { FooterDesktop } from "@/assets/images/footerdesktop";
+import { FooterMobile }  from "@/assets/images/footermobile";
 
 export const Footer = () => {
-  return (
-    <footer
-      className="
-        relative w-full mt-10 overflow-visible z-99999
-        h-[clamp(150px,35vh,280px)]
-        sm:h-[clamp(160px,40vh,400px)]
-        md:h-[clamp(250px,55vh,550px)]
-        lg:h-[clamp(300px,50vh,500px)]
-        xl:h-[clamp(260px,40vh,520px)]
-      "
-    >
-      {/* BG image – mobil bundforankret, ingen beskæring */}
-      <Image
-        src={FooterMobile}
-        alt=""
-        fill
-        priority
-        aria-hidden
-        className="object-contain object-bottom lg:hidden -z-10 realtive overflow-visible h-full"
-      />
-      {/* BG image – desktop dækker pænt */}
-      <Image
-        src={FooterDesktop}
-        alt=""
-        fill
-        priority
-        aria-hidden
-        className="hidden lg:block object-cover [object-position:bottom] -z-10"
-      />
+  const path = usePathname();
+  const isFrontpage = path === "/";
 
-      <div className="absolute bottom-[100px] left-2 lg:bottom-[150px] lg:left-6 xl:bottom-[200px] text-[var(--sky)]">
-        <h1 className="text-xs lg:text-2xl">© 2025 WeGo ApS</h1>
-        <p className="text-[10px] lg:text-lg">Fartstræde 12c, 2. sal, 9000 Aalborg</p>
+  return (
+    <footer className="w-full">
+      
+      {/* Mobil */}
+      <div className="block lg:hidden">
+        <FooterMobile className="w-full h-auto" />
       </div>
+
+      {/* Desktop */}
+      {!isFrontpage && (
+        <div className="hidden lg:block overflow-visible">
+          <FooterDesktop className="w-full h-auto lg:-mt-12" />
+        </div>
+      )}
     </footer>
   );
 };

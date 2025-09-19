@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const { login, loading, error } = useLogin();
-  const { setLoginData } = useAuth();
+  const { setLoginData          } = useAuth();
   const router = useRouter();
 
   const onSubmit = async (formData) => {

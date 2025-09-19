@@ -1,22 +1,22 @@
 export const metadata = {
-  title: "Forside | Mit Webshop",
-  description: "Velkommen til forsiden af Mit Webshop. Find de bedste produkter og tilbud.",
-  keywords: ["forside", "webshop", "tilbud", "produkter", "handel"],
+  title: "Køreture | Søg lifte",
+  description: "Se ledige køreture og søg efter et lift fra A til B. Filtrér efter fra/til, dato og pris.",
+  keywords: ["køreture", "samkørsel", "lift", "find lift", "søg køretur", "bilpool"],
   robots: "index, follow",
   alternates: {
-    canonical: "/",
+    canonical: "/list",
   },
   openGraph: {
-    title: "Forside | Mit Webshop",
-    description: "Velkommen til forsiden af Mit Webshop. Find de bedste produkter og tilbud.",
-    url: "https://ditdomæne.dk/",
+    title: "Køreture | Søg lifte",
+    description: "Browse og søg efter køreture tæt på dig. Find et lift hurtigt og nemt.",
+    url: "https://ditdomæne.dk/list",
     siteName: "Mit Webshop",
     images: [
       {
-        url: "https://ditdomæne.dk/og-image.jpg",
+        url: "https://ditdomæne.dk/og-trips.jpg",
         width: 1200,
         height: 630,
-        alt: "Forside af Mit Webshop",
+        alt: "Liste og søgning af køreture",
       },
     ],
     locale: "da_DK",
@@ -25,13 +25,14 @@ export const metadata = {
 };
 
 
+
 import ListPage from "@/pages/ListPage";
 
 export default function Page() {
     
     return (
       <>
-      {/* <ListPage /> */}
+      <ListPage  />
       </>
     )
 }
