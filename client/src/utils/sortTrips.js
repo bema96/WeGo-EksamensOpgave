@@ -1,23 +1,34 @@
-
-const PREF_FLAG = {
+// map fra præference-key -> feltnavn i trip
+const preference = {
   music:   "allowMusic",
   børn:    "allowChildren",
   dyr:     "allowPets",
   rygning: "allowSmoking",
 };
 
-export function sortTrips( trips, { seats = 1, bagSizeId = null, comfort = false, prefs = [] } = {}, bagOptions = [] ) {
 
+export function filteredTrips(trips, selectedFilter = "") {
+  if (!selectedFilter) return trips;
 
-  const bagIds = bagOptions.map(o => o.id);        
-  const needIdx = bagSizeId == null ? -1 : bagIds.indexOf(bagSizeId);
+  if (selectedFilter.startsWith("seats>=")) {
+    const n = Number(selectedFilter.split(">=")[1] || 1);
+    return trips.filter(trip => (trip.seatsTotal || 0) >= n);
+  }
 
-  return trips.filter(t => {
-    const okSeats    = t.seatsTotal >= seats;
-    const okBag      = needIdx < 0 ? true : bagIds.indexOf(t.bagSizeId) >= needIdx;
-    const okComfort  = !comfort || t.hasComfort === true;
-    const okPrefs    = prefs.every(p => t[PREF_FLAG[p]] === true);
+  if (selectedFilter.startsWith("bag=")) {
+    const id = selectedFilter.split("=")[1] ?? "";
+    return id === "" ? trips : trips.filter(trip => trip.bagSizeId === id);
+  }
 
-    return okSeats && okBag && okComfort && okPrefs;
-  });
+  if (selectedFilter === "comfort") {
+    return trips.filter(trip => trip.hasComfort === true);
+  }
+
+  if (selectedFilter.startsWith("preference:")) {
+    const key  = selectedFilter.split(":")[1];
+    const flag = preference[key];
+    return flag ? trips.filter(trip => trip[flag] === true) : trips;
+  }
+
+  return trips;
 }

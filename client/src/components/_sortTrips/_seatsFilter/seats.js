@@ -1,7 +1,6 @@
 "use client";
 
-export function SeatsFilter({ value = 1, min = 1, max = 8, onChange, className = "" }) {
-    
+export function SeatsFilter({ value = 1, min = 1, max = 6, onChange, className = "" }) {
   return (
     <div className={`${className} border-b border-gray-300 py-5`}>
       <div className="flex justify-between pb-3">
@@ -15,7 +14,7 @@ export function SeatsFilter({ value = 1, min = 1, max = 8, onChange, className =
         max={max}
         step={1}
         value={value}
-        onChange={(e) => onChange && onChange(Number(e.target.value))}
+        onChange={(e) => onChange?.(Number(e.target.value))}
       />
     </div>
   );
